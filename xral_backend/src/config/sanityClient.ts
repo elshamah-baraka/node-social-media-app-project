@@ -1,9 +1,11 @@
 import { createClient } from '@sanity/client'
 
-export const sanityClient = createClient({
+const sanityClient = createClient({
   projectId: process.env.SANITY_PROJECT_ID!,
   dataset: process.env.SANITY_DATASET!,
   apiVersion: '2024-01-01',
-  useCdn: false, // false for fresh data (feeds)
-  token: process.env.SANITY_API_TOKEN,
+  useCdn: false,
+  token: process.env.SANITY_TOKEN, // optional if writing data
 })
+
+export default sanityClient

@@ -28,4 +28,3 @@ export const getFeedPosts = async (limit = 10) => {
     author: post.author,
   }))
 }
-

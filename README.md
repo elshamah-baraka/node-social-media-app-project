@@ -1,109 +1,152 @@
-XRAL is a full-stack social media platform designed with scalability, modularity, and future service migration in mind.
+XRAL
 
-The backend is structured using a service-layer architecture to isolate external dependencies (e.g., CMS) and enable smooth future transitions to internal data stores or microservices.
+XRAL is a full-stack social media platform built with a strong focus on clean architecture, modularity, and future scalability.
 
-This project is currently being prepared for production deployment.
+The project is structured to support production deployment and future migration from external services to internal infrastructure without major refactors.
 
-🧠 Architecture Philosophy
+🚀 Project Overview
+
+XRAL is currently under active development and is being prepared for production readiness.
+
+Key goals:
 
 Clean separation of concerns
 
-Service layer abstraction
+Service-layer abstraction in backend
+
+External CMS isolation (Sanity)
 
 Type-safe backend (TypeScript)
 
-Scalable folder structure
+Scalable monorepo structure
 
-CMS isolation behind adapters
+🏗️ Monorepo Structure
 
-Environment-based configuration
+xral/
+├── xral_backend/
+│   ├── src/
+│   ├── xral/              # Sanity Studio (CMS)
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── xral_frontend/
+│   ├── src/
+│   ├── vite.config.ts
+│   ├── package.json
+│   └── tsconfig files
+│
+└── package.json (root)
 
-The goal is to ensure that external services like Sanity can be replaced without rewriting core business logic.
+🧠 Architecture Philosophy
+1️⃣ Backend Design
 
-🏗️ Project Structure
+Built with Node.js + TypeScript
 
-  xral/
- ├── xral_backend/
- │    ├── src/
- │    │    ├── controllers/
- │    │    ├── services/
- │    │    ├── routes/
- │    │    ├── config/
- │    │    └── index.ts
- │
- ├── xral_frontend/
- │
- └── README.md
+Structured service layer
 
- ⚙️ Tech Stack
+External CMS (Sanity) isolated behind abstraction
 
-Backend:
+Designed for future database migration (e.g., PostgreSQL)
+
+The goal is to ensure that replacing Sanity with an internal database will require minimal business logic changes.
+
+2️⃣ Sanity CMS (Studio v3+)
+
+Used for rapid schema iteration
+
+Maintains structured content models
+
+Isolated within xral_backend/xral
+
+Intended to be replaceable in future scaling phase
+
+3️⃣ Frontend
+
+Built using Vite + React
+
+Modular component structure
+
+Designed to consume backend APIs (not tightly coupled to CMS)
+
+⚙️ Tech Stack
+Backend
 
 Node.js
 
 TypeScript
 
-Express
+Express (if applicable — confirm)
 
-Sanity CMS (abstracted via service layer)
+Service-layer architecture
 
-Frontend:
+CMS
 
-React.js
+Sanity Studio v3+
 
-Dev Environment:
+Frontend
 
-WSL2 (Ubuntu)
+React
+
+Vite
+
+TypeScript
+
+Dev Environment
+
+Windows 11 + WSL2 (Ubuntu)
 
 Docker (WSL integration)
 
-pnpm
-
 Git + GitHub CLI
 
-🛠️ Local Setup
+🛠️ Local Development
+Backend
 
- # Clone repository
-git clone https://github.com/elshamah-baraka/node-social-media-app-project
-
-# Backend
 cd xral_backend
-pnpm install
-pnpm dev
+npm install
+npm run dev
 
-Environment variables required:
+Sanity Studio
 
-PORT=
-SANITY_PROJECT_ID=
-SANITY_DATASET=
+cd xral_backend/xral
+npm install
+npm run dev
 
-🔄 Future Improvements (Roadmap)
+Frontend
 
-Authentication & authorization system
+cd xral_frontend
+npm install
+npm run dev
 
-Internal database migration (PostgreSQL)
+🔄 Roadmap (Production Preparation)
 
-Caching layer (Redis)
+ Centralized error handling
 
-CI/CD pipeline
+ API request validation layer
 
-Dockerized production setup
+ Authentication system
 
-Cloud deployment (AWS / Render / Railway)
+ Database migration from CMS
 
-📈 Production Goals
+ Dockerized deployment
 
-XRAL is being structured for:
+ CI/CD pipeline
 
-Service independence
+ Cloud deployment
 
-Horizontal scalability
+📈 Long-Term Vision
 
-Clean API boundaries
+XRAL is being developed as a learning-driven but production-oriented system, emphasizing:
 
-Production deployment readiness
+Clean architecture
+
+Replaceable infrastructure
+
+Scalability mindset
+
+Engineering best practices
 
 👨🏽‍💻 Author
 
 Elshamah Baraka
-Aspiring Software Engineer focused on scalable backend systems and production-ready architecture.
+Software Engineering Intern Applicant | Backend-focused Full Stack Developer

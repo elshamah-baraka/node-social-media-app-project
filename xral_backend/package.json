@@ -1,13 +1,19 @@
 {
   "dependencies": {
-    "-": "^0.0.1",
     "@sanity/cli": "^4.3.0",
     "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "g": "^2.0.1"
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/node": "^25.0.10"
+    "@types/node": "^25.0.10",
+    "nodemon": "^3.x",
+    "ts-node": "^10.x",
+    "typescript": "^5.x"
+  },
+  "scripts": {
+    "dev": "nodemon --watch src --exec ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
   }
 }
