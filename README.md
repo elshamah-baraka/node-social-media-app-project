@@ -1,141 +1,109 @@
-# Social Media App
+XRAL is a full-stack social media platform designed with scalability, modularity, and future service migration in mind.
 
-A full-stack social media application built with **React** (frontend) and **Sanity Studio** (backend/content management).  
-This project demonstrates modern **full-stack development**, environment management, and clean repository practices.
+The backend is structured using a service-layer architecture to isolate external dependencies (e.g., CMS) and enable smooth future transitions to internal data stores or microservices.
 
----
+This project is currently being prepared for production deployment.
 
-## 🚀 Project Structure
+🧠 Architecture Philosophy
 
-```text
-social-app/
-├─ backend/          # Sanity Studio
-│  ├─ package.json
-│  ├─ .env.example
-│  └─ src/
-├─ frontend/         # React + Vite Frontend
-│  ├─ package.json
-│  ├─ .env.example
-│  └─ src/
-├─ .gitignore
-└─ README.md
+Clean separation of concerns
 
-🔧 Requirements
+Service layer abstraction
 
-Node.js 20.x (recommended via NVM
-)
+Type-safe backend (TypeScript)
 
-npm 10+
+Scalable folder structure
 
-Git
+CMS isolation behind adapters
 
-⚡ Setup Instructions
+Environment-based configuration
 
-1️⃣ Clone the Repository
+The goal is to ensure that external services like Sanity can be replaced without rewriting core business logic.
 
-git clone https://github.com/<username>/social-app.git
-cd social-app
+🏗️ Project Structure
 
-2️⃣ Backend Setup (Sanity Studio)
+  xral/
+ ├── xral_backend/
+ │    ├── src/
+ │    │    ├── controllers/
+ │    │    ├── services/
+ │    │    ├── routes/
+ │    │    ├── config/
+ │    │    └── index.ts
+ │
+ ├── xral_frontend/
+ │
+ └── README.md
 
-cd backend
-nvm use 20
-npm install
-cp .env.example .env
-# Fill in SANITY_PROJECT_ID, SANITY_DATASET, SANITY_API_TOKEN
-npm run dev
+ ⚙️ Tech Stack
 
-3️⃣ Frontend Setup (React + Vite)
+Backend:
 
-cd ../frontend
-nvm use 20
-npm install
-cp .env.example .env
-# Fill in VITE_SANITY_PROJECT_ID, VITE_SANITY_DATASET, VITE_SANITY_API_TOKEN
-npm run dev
+Node.js
 
-🔑 Environment Variables
-Backend (backend/.env)
+TypeScript
 
+Express
+
+Sanity CMS (abstracted via service layer)
+
+Frontend:
+
+(Insert what you're using here — React? Next.js?)
+
+Dev Environment:
+
+WSL2 (Ubuntu)
+
+Docker (WSL integration)
+
+pnpm
+
+Git + GitHub CLI
+
+🛠️ Local Setup
+
+ # Clone repository
+git clone https://github.com/yourusername/xral.git
+
+# Backend
+cd xral_backend
+pnpm install
+pnpm dev
+
+Environment variables required:
+
+PORT=
 SANITY_PROJECT_ID=
 SANITY_DATASET=
-SANITY_API_TOKEN=
 
-Frontend (frontend/.env)
+🔄 Future Improvements (Roadmap)
 
-VITE_SANITY_PROJECT_ID=
-VITE_SANITY_DATASET=
-VITE_SANITY_API_TOKEN=
+Authentication & authorization system
 
-⚠️ Never commit .env files.
-Only .env.example files should be tracked in Git.
+Internal database migration (PostgreSQL)
 
-📌 Node Version Management
+Caching layer (Redis)
 
-Node version is locked in each package.json using:
-"engines": {
-  "node": ">=20 <23"
-}
+CI/CD pipeline
 
-Always switch Node versions with:
-nvm use 20
+Dockerized production setup
 
-🛠 Scripts
-Backend
-| Script           | Description                 |
-| ---------------- | --------------------------- |
-| `npm run dev`    | Start Sanity Studio locally |
-| `npm run build`  | Build for production        |
-| `npm run deploy` | Deploy Sanity Studio        |
+Cloud deployment (AWS / Render / Railway)
 
-Frontend
-| Script            | Description              |
-| ----------------- | ------------------------ |
-| `npm run dev`     | Start React frontend     |
-| `npm run build`   | Build frontend           |
-| `npm run preview` | Preview production build |
-| `npm run lint`    | Run ESLint               |
+📈 Production Goals
 
+XRAL is being structured for:
 
-🔄 Recommended Workflow
+Service independence
 
-1. Switch Node version per folder:
-cd backend
-nvm use 20
-cd ../frontend
-nvm use 20
+Horizontal scalability
 
-2. Install dependencies:
-npm install
+Clean API boundaries
 
-3.Copy .env.example → .env and fill values
+Production deployment readiness
 
-4.Start development servers:
-npm run dev
+👨🏽‍💻 Author
 
-📝 Contributing
-
-1.Fork the repository
-
-2.Create a feature branch:
-git checkout -b feature-name
-
-3.Commit changes cleanly:
-git commit -m "Add feature X"
-
-4.Push and open a pull request
-
-🎯 Professional Notes
-
-.gitignore prevents committing node_modules and secrets
-
-.env.example documents required environment variables
-
-Clear separation of backend/ and frontend/
-
-Node versions locked for consistency across environments
-
-
-
-
-
+Elshamah Baraka
+Aspiring Software Engineer focused on scalable backend systems and production-ready architecture.
