@@ -64,7 +64,7 @@ Git + GitHub CLI
 🛠️ Local Setup
 
  # Clone repository
-git clone https://github.com/yourusername/xral.git
+git clone https://github.com/elshamah-baraka/node-social-media-app-project
 
 # Backend
 cd xral_backend
