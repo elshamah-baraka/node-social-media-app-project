@@ -49,7 +49,7 @@ Sanity CMS (abstracted via service layer)
 
 Frontend:
 
-(Insert what you're using here — React? Next.js?)
+React.js
 
 Dev Environment:
 
