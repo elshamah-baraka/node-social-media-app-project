@@ -1,152 +1,113 @@
-XRAL
+XRAL — Social Media Platform (In Progress)
 
-XRAL is a full-stack social media platform built with a strong focus on clean architecture, modularity, and future scalability.
+XRAL is a full-stack social media application built with a modular architecture to support scalability, CMS flexibility, and production deployment.
 
-The project is structured to support production deployment and future migration from external services to internal infrastructure without major refactors.
+The project is currently under active development with a target production-ready milestone within 1–2 months.
 
-🚀 Project Overview
-
-XRAL is currently under active development and is being prepared for production readiness.
-
-Key goals:
-
-Clean separation of concerns
-
-Service-layer abstraction in backend
-
-External CMS isolation (Sanity)
-
-Type-safe backend (TypeScript)
-
-Scalable monorepo structure
-
-🏗️ Monorepo Structure
-
-xral/
-├── xral_backend/
-│   ├── src/
-│   ├── xral/              # Sanity Studio (CMS)
-│   ├── package.json
-│   └── tsconfig.json
-│
-├── xral_frontend/
-│   ├── src/
-│   ├── vite.config.ts
-│   ├── package.json
-│   └── tsconfig files
-│
-└── package.json (root)
-
-🧠 Architecture Philosophy
-1️⃣ Backend Design
-
-Built with Node.js + TypeScript
-
-Structured service layer
-
-External CMS (Sanity) isolated behind abstraction
-
-Designed for future database migration (e.g., PostgreSQL)
-
-The goal is to ensure that replacing Sanity with an internal database will require minimal business logic changes.
-
-2️⃣ Sanity CMS (Studio v3+)
-
-Used for rapid schema iteration
-
-Maintains structured content models
-
-Isolated within xral_backend/xral
-
-Intended to be replaceable in future scaling phase
-
-3️⃣ Frontend
-
-Built using Vite + React
-
-Modular component structure
-
-Designed to consume backend APIs (not tightly coupled to CMS)
-
-⚙️ Tech Stack
-Backend
-
-Node.js
-
-TypeScript
-
-Express (if applicable — confirm)
-
-Service-layer architecture
-
-CMS
-
-Sanity Studio v3+
-
+🚀 Tech Stack
 Frontend
 
 React
 
+TypeScript
+
 Vite
+
+Backend
+
+Node.js (v22+)
+
+Express
 
 TypeScript
 
-Dev Environment
+CMS Layer
 
-Windows 11 + WSL2 (Ubuntu)
+Sanity Studio v5
 
-Docker (WSL integration)
+Isolated behind a service layer for future migration flexibility
 
-Git + GitHub CLI
+🧠 Architectural Philosophy
 
-🛠️ Local Development
-Backend
+XRAL is structured as a monorepo with clear separation of concerns:
+
+socialmediaapp/
+│
+├── xral_frontend/
+├── xral_backend/
+│   └── xral/ (Sanity Studio)
+
+Key architectural decisions:
+
+Sanity CMS is abstracted behind a backend service layer.
+
+Frontend does not directly depend on CMS APIs.
+
+Backend is structured to allow migration to a different CMS or database without affecting the frontend.
+
+Node version locked to 22.x to maintain engine consistency.
+
+This reduces vendor lock-in risk and improves long-term maintainability.
+
+🛠️ Local Development Setup
+1. Ensure Node 22 is installed
+
+nvm use 22
+
+2. Backend
 
 cd xral_backend
 npm install
 npm run dev
 
-Sanity Studio
+3. Sanity Studio
 
 cd xral_backend/xral
 npm install
 npm run dev
 
-Frontend
+4. Frontend
 
 cd xral_frontend
 npm install
 npm run dev
 
-🔄 Roadmap (Production Preparation)
 
- Centralized error handling
+🔐 Environment Variables
 
- API request validation layer
+Create .env files in:
 
- Authentication system
+xral_backend
 
- Database migration from CMS
+xral_frontend 
 
- Dockerized deployment
+Do not commit .env files.
 
- CI/CD pipeline
+📌 Current Status
 
- Cloud deployment
+Dev environment migrated to WSL
 
-📈 Long-Term Vision
+Stack stabilized
 
-XRAL is being developed as a learning-driven but production-oriented system, emphasizing:
+Node engine standardized (22.x)
 
-Clean architecture
+Sanity v5 operational
 
-Replaceable infrastructure
+Monorepo structure validated
 
-Scalability mindset
+🎯 Next Milestones
 
-Engineering best practices
+API contract refinement
+
+Auth system integration
+
+Deployment pipeline setup
+
+Production hosting
+
+
 
 👨🏽‍💻 Author
 
 Elshamah Baraka
-Software Engineering Intern Applicant | Backend-focused Full Stack Developer
+Software Engineer | Backend-focused Full Stack Developer
