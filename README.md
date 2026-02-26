@@ -1,110 +1,185 @@
-XRAL — Social Media Platform (In Progress)
+🚀 XRAL — Scalable Social Media Platform
 
-XRAL is a full-stack social media application built with a modular architecture to support scalability, CMS flexibility, and production deployment.
+XRAL is a full-stack social media application built with scalability, modularity, and production-readiness in mind.
 
-The project is currently under active development with a target production-ready milestone within 1–2 months.
+The system is structured as a monorepo with isolated frontend, backend, and CMS layers to allow independent evolution and clean architectural boundaries.
 
-🚀 Tech Stack
-Frontend
-
-React
-
-TypeScript
-
-Vite
-
-Backend
-
-Node.js (v22+)
-
-Express
-
-TypeScript
-
-CMS Layer
-
-Sanity Studio v5
-
-Isolated behind a service layer for future migration flexibility
-
-🧠 Architectural Philosophy
-
-XRAL is structured as a monorepo with clear separation of concerns:
+🏗️ Project Structure
 
 socialmediaapp/
 │
-├── xral_frontend/
-├── xral_backend/
-│   └── xral/ (Sanity Studio)
+├── xral_backend/     # Node.js + TypeScript + Prisma + PostgreSQL
+├── xral_frontend/    # Vite + TypeScript frontend
+└── xral_backend/xral # Sanity Studio (CMS)
 
-Key architectural decisions:
+🧠 Architecture Overview
 
-Sanity CMS is abstracted behind a backend service layer.
+XRAL follows a layered architecture:
 
-Frontend does not directly depend on CMS APIs.
+Frontend (Vite + TS)
+        ↓
+Backend API (Node + TS)
+        ↓
+Service Layer
+        ↓
+Prisma ORM
+        ↓
+PostgreSQL
 
-Backend is structured to allow migration to a different CMS or database without affecting the frontend.
+Sanity CMS is isolated behind a service layer, allowing gradual migration toward a fully relational architecture without tight coupling.
 
-Node version locked to 22.x to maintain engine consistency.
+🧰 Tech Stack
+Frontend
 
-This reduces vendor lock-in risk and improves long-term maintainability.
+Vite
 
-🛠️ Local Development Setup
-1. Ensure Node 22 is installed
+TypeScript
 
-nvm use 22
+Modern modular component structure
 
-2. Backend
+Backend
 
+Node.js
+
+TypeScript
+
+Prisma ORM
+
+PostgreSQL
+
+ESLint
+
+Environment-based configuration
+
+CMS
+
+Sanity Studio
+
+Schema-based content modeling
+
+Isolated integration layer
+
+Development Environment
+
+Windows 11
+
+WSL2 (Ubuntu)
+
+Node via nvm
+
+Docker-ready setup
+
+Git + GitHub SSH
+
+🗄️ Backend Setup (PostgreSQL + Prisma)
+1️⃣ Start PostgreSQL
+sudo service postgresql start
+
+2️⃣ Create Database and User
+
+Inside psql:
+
+CREATE DATABASE xral_db;
+CREATE USER xral_user WITH PASSWORD 'yourpassword';
+GRANT ALL PRIVILEGES ON DATABASE xral_db TO xral_user;
+ALTER USER xral_user CREATEDB;
+
+\c xral_db
+GRANT ALL ON SCHEMA public TO xral_user;
+ALTER SCHEMA public OWNER TO xral_user;
+
+3️⃣ Configure Environment Variables
+
+Create .env inside xral_backend:
+
+DATABASE_URL="postgresql://xral_user:yourpassword@localhost:5432/xral_db"
+
+⚠️ .env is excluded from version control.
+
+4️⃣ Run Prisma Migration
+cd xral_backend
+npx prisma migrate dev --name init
+
+This:
+
+Applies schema
+
+Creates migration history
+
+Generates Prisma client
+
+🧪 Running the Backend
 cd xral_backend
 npm install
 npm run dev
 
-3. Sanity Studio
-
-cd xral_backend/xral
-npm install
-npm run dev
-
-4. Frontend
-
+🎨 Running the Frontend
 cd xral_frontend
 npm install
 npm run dev
 
+🧩 Running Sanity Studio
+cd xral_backend/xral
+npm install
+npm run dev
 
-🔐 Environment Variables
+Sanity runs independently and communicates through a controlled backend integration layer.
 
-Create .env files in:
+🧠 Design Philosophy
 
-xral_backend
+XRAL is built with:
 
-xral_frontend 
+Separation of concerns
 
-Do not commit .env files.
+Incremental migration strategy
 
-📌 Current Status
+Relational database-first mindset
 
-Dev environment migrated to WSL
+Production deployment readiness
 
-Stack stabilized
+Clean Git history and structured commits
 
-Node engine standardized (22.x)
+The goal is long-term scalability, not just rapid feature shipping.
 
-Sanity v5 operational
+🔐 Environment & Security Notes
 
-Monorepo structure validated
+Dedicated PostgreSQL user (not default postgres)
 
-🎯 Next Milestones
+Schema-level permission configuration
 
-API contract refinement
+Local development via WSL2
 
-Auth system integration
+Environment variables excluded from Git
 
-Deployment pipeline setup
+Migration-based DB lifecycle management
 
-Production hosting
+🛣️ Roadmap (Backend)
 
+ PostgreSQL integration
+
+ Prisma ORM setup
+
+ Migration system operational
+
+ Core models (User, Post, Follow, Like)
+
+ Authentication system
+
+ Production deployment configuration
+
+ CI-based migration workflow
+
+🎯 Long-Term Vision
+
+XRAL is being engineered as a modular, scalable social platform where:
+
+CMS can be phased out if needed
+
+Backend can scale independently
+
+Database architecture supports growth
+
+Frontend can evolve without backend coupling
 
 
 👨🏽‍💻 Author
